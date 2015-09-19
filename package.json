@@ -1,0 +1,50 @@
+{
+  "name": "connect-composer",
+  "version": "0.1.0",
+  "description": "Connect and reuse connect middlewares",
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "latest",
+    "standard": "latest"
+  },
+  "scripts": {
+    "test": "mocha test/*.mocha.js",
+    "cover": "istanbul cover _mocha --report lcov --report text -- -R dot --check-leaks test/*.mocha.js",
+    "doc": "jsdox -o doc index.js lib/*.js",
+    "lint": "standard",
+    "readme": "markedpp --githubid -i README.md -o README.md",
+    "clean": "rm -rf doc coverage"
+  },
+  "standard": {
+    "ignore": [
+      "/coverage/*",
+      "/tmp/*"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commenthol/connect-composer.git"
+  },
+  "keywords": [
+    "connect",
+    "express",
+    "compose",
+    "middleware",
+    "pipeline"
+  ],
+  "author": "commenthol <commenthol@gmail.com>",
+  "maintainers": "commenthol <commenthol@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/commenthol/connect-composer/issues"
+  },
+  "homepage": "https://github.com/commenthol/connect-composer"
+}
