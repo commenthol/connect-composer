@@ -18,6 +18,28 @@ Features:
 ## Table of Contents
 
 <!-- !toc (minlevel=2 omit="Table of Contents") -->
+
+* [Description](#description)
+  * [Stack Middlewares](#stack-middlewares)
+  * [Stack composed middlewares](#stack-composed-middlewares)
+  * [Trap and catch errors](#trap-and-catch-errors)
+  * [Manipulate and reuse middlewares](#manipulate-and-reuse-middlewares)
+* [Example](#example)
+* [Methods](#methods)
+* [compose() ⇒ <code>function</code>](#compose)
+  * [compose.before ⇒ <code>function</code>](#compose.before)
+  * [compose.after ⇒ <code>function</code>](#compose.after)
+  * [compose.replace ⇒ <code>function</code>](#compose.replace)
+  * [compose.remove ⇒ <code>function</code>](#compose.remove)
+  * [compose.push ⇒ <code>function</code>](#compose.push)
+  * [compose.unshift ⇒ <code>function</code>](#compose.unshift)
+  * [compose.decompose(middlewares) ⇒ <code>Array</code>](#compose.decompose)
+  * [compose.clone() ⇒ <code>function</code>](#compose.clone)
+  * [compose.noop()](#compose.noop)
+* [Contribution and License Agreement](#contribution-and-license-agreement)
+* [License](#license)
+* [References](#references)
+
 <!-- toc! -->
 
 ## Description
@@ -182,7 +204,7 @@ Run the examples above with [node test/sample.js](test/sample.js).
 
 ## Methods
 
-<a name="compose"></a>
+<a name="compose"/>
 ## compose() ⇒ <code>function</code>
 compose a new middleware function from multiple middlewares
 
@@ -203,7 +225,7 @@ compose a new middleware function from multiple middlewares
   * [.clone()](#compose.clone) ⇒ <code>function</code>
   * [.noop()](#compose.noop)
 
-<a name="compose.before"></a>
+<a name="compose.before"/>
 ### compose.before ⇒ <code>function</code>
 Inserts `middlewares` before each of the named middleware `selector`
 If `selector` does not match a named middleware the middleware stack stays the same
@@ -216,7 +238,7 @@ If `selector` does not match a named middleware the middleware stack stays the s
 | selector | <code>String</code> | selector for named middleware |
 | middlewares | <code>Array</code> &#124; <code>Object</code> |  |
 
-<a name="compose.after"></a>
+<a name="compose.after"/>
 ### compose.after ⇒ <code>function</code>
 Inserts `middlewares` after each of the named middleware `selector`
 If `selector` does not match a named middleware the middleware stack stays the same
@@ -229,7 +251,7 @@ If `selector` does not match a named middleware the middleware stack stays the s
 | selector | <code>String</code> | selector for named middleware |
 | middlewares | <code>Array</code> &#124; <code>Object</code> |  |
 
-<a name="compose.replace"></a>
+<a name="compose.replace"/>
 ### compose.replace ⇒ <code>function</code>
 Replaces the named middleware `selector` with `middlewares`
 If `selector` does not match a named middleware the middleware stack stays the same
@@ -242,7 +264,7 @@ If `selector` does not match a named middleware the middleware stack stays the s
 | selector | <code>String</code> | selector for named middleware |
 | middlewares | <code>Array</code> &#124; <code>Object</code> |  |
 
-<a name="compose.remove"></a>
+<a name="compose.remove"/>
 ### compose.remove ⇒ <code>function</code>
 Removes the named middleware `selector` from the stack
 If `selector` does not match a named middleware the middleware stack stays the same
@@ -254,7 +276,7 @@ If `selector` does not match a named middleware the middleware stack stays the s
 | --- | --- | --- |
 | selector | <code>String</code> | selector for named middleware |
 
-<a name="compose.push"></a>
+<a name="compose.push"/>
 ### compose.push ⇒ <code>function</code>
 Appends `middlewares` to the stack
 
@@ -265,7 +287,7 @@ Appends `middlewares` to the stack
 | --- | --- |
 | middlewares | <code>Array</code> &#124; <code>Object</code> |
 
-<a name="compose.unshift"></a>
+<a name="compose.unshift"/>
 ### compose.unshift ⇒ <code>function</code>
 Prepends `middlewares` to the stack
 
@@ -276,7 +298,7 @@ Prepends `middlewares` to the stack
 | --- | --- |
 | middlewares | <code>Array</code> &#124; <code>Object</code> |
 
-<a name="compose.decompose"></a>
+<a name="compose.decompose"/>
 ### compose.decompose(middlewares) ⇒ <code>Array</code>
 decompose `obj` into middleware Array
 Named functions names are used as middleware identifiers
@@ -288,13 +310,13 @@ Named functions names are used as middleware identifiers
 | --- | --- |
 | middlewares | <code>Object</code> &#124; <code>Array</code> &#124; <code>function</code> |
 
-<a name="compose.clone"></a>
+<a name="compose.clone"/>
 ### compose.clone() ⇒ <code>function</code>
 clone the middleware for further manipulation
 
 **Kind**: static method of <code>[compose](#compose)</code>
 **Returns**: <code>function</code> - cloned middleware function
-<a name="compose.noop"></a>
+<a name="compose.noop"/>
 ### compose.noop()
 No operation middleware - just calls next
 
@@ -317,6 +339,11 @@ See [LICENSE][] for more info.
 ## References
 
 <!-- !ref -->
+
+* [connect][connect]
+* [express][express]
+* [LICENSE][LICENSE]
+
 <!-- ref! -->
 
 [LICENSE]: ./LICENSE
