@@ -1,6 +1,6 @@
 {
   "name": "connect-composer",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Connect and reuse connect middlewares",
   "keywords": [
     "compose",
