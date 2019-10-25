@@ -50,23 +50,24 @@ var compose = require('..')
   var middlewares = compose(
     function (req, res, next) { req.test.push('one'); next() },
     function (req, res, next) {
-      next('badly')           // middleware calls `next` with error parameter
+      next('badly') // middleware calls `next` with error parameter
     },
     function (req, res, next) {
-      req.test.push('two')    // is never called
+      req.test.push('two') // is never called
       next()
     },
     function (err, req, res, next) { // error is trapped here; function has arity 4
       console.log(3, err + ' trapped') // < badly trapped
-      next()                  // continue with the processing
+      next() // continue with the processing
     },
     function (req, res, next) { req.test.push('three'); next() },
     function (req, res, next) {
+      // eslint-disable-next-line
       if (1) throw new Error('another error') // middleware calls `next` with error parameter
       next()
     },
     function (req, res, next) {
-      req.test.push('four')   // is never called
+      req.test.push('four') // is never called
       next()
     }
   )
@@ -96,27 +97,27 @@ var compose = require('..')
   var composed = compose(initial)
 
   // do some manipulation
-  composed.unshift(others.one)              // prepend
-  composed.push(others.five)                // append
-  composed.before('four', others.three)     // insert before
-  composed.after('othersFive', others.six)  // insert after
+  composed.unshift(others.one) // prepend
+  composed.push(others.five) // append
+  composed.before('four', others.three) // insert before
+  composed.after('othersFive', others.six) // insert after
   composed.after('six', others.seven)
 
   // named functions become named middleware functions
   console.log(composed.stack) // [ { one: [Function: one] },
-                              //   { two: [Function] },
-                              //   { three: [Function: three] },
-                              //   { four: [Function] },
-                              //   { othersFive: [Function: othersFive] },
-                              //   { six: [Function: six] },
-                              //   { seven: [Function] } ]
+  //   { two: [Function] },
+  //   { three: [Function: three] },
+  //   { four: [Function] },
+  //   { othersFive: [Function: othersFive] },
+  //   { six: [Function: six] },
+  //   { seven: [Function] } ]
 
   // lets clone the middlewares
   var composed2 = composed.clone() // clone the middlewares; same as `compose(composed)`
   composed2.remove('six').remove('two').remove('four') // remove middlewares
 
   // do some more manipulation
-  composed.replace('seven', others.eight)   // replace middleware seven with eight
+  composed.replace('seven', others.eight) // replace middleware seven with eight
 
   // run new composed middleware
   var req = { test: [] }
